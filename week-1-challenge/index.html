@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | News homepage</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", "sans-serif";
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: 15px;
+      color: hsl(236, 13%, 42%);
+    }
+
+    .container--1 {
+      width: 1117px;
+      margin: 5% auto;
+    }
+
+    .main-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 45px;
+    }
+
+    .main-nav {
+      color: hsl(236, 13%, 42%);
+      display: flex;
+      gap: 40px;
+    }
+
+    .container--2 {
+      display: flex;
+      margin-bottom: 60px;
+      gap: 30px;
+    }
+
+    .main-news {
+      width: 730px;
+    }
+
+    .main-img {
+      width: 730px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .main-content {
+      display: flex;
+      width: 730px;
+    }
+
+    .main-content h1 {
+      line-height: 1;
+      font-size: 56px;
+      padding-top: 5px;
+      padding-right: 25px;
+    }
+
+    .sub-main-content {
+      width: 110%;
+    }
+
+    .sub-main-content p {
+      color:hsl(236, 13%, 42%);
+      margin-bottom: 40px;
+    }
+
+    .sub-main-content button {
+      background-color: hsl(5, 85%, 63%);
+      color: hsl(36, 100%, 99%);
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      padding: 14px 35px;
+      border-style: none;
+    }
+
+    .sec-news {
+      padding: 20px 35px;
+      background-color: hsl(240, 100%, 5%);
+    }
+
+    .sec-news h1 {
+      color: hsl(35, 77%, 62%);
+    }
+
+    .content-block {
+      border-bottom: 1px solid hsl(236, 13%, 42%);
+      padding-top: 25px;
+      padding-bottom: 25px;
+    }
+
+    .content-block:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .sec-news h3 {
+      margin-bottom: 5px;
+      color: hsl(36, 100%, 99%);
+    }
+
+    .sec-news p {
+      color: hsl(233, 8%, 79%);
+      line-height: 2;
+    }
+
+    .news-list {
+      list-style: none;
+      display: flex;
+      gap: 35px;
+      line-height: 1.8;
+    }
+
+    .news-li {
+      display: flex;
+      gap: 20px;
+    }
+    .news-li-img {
+      width: 100px;
+      height: 127px;
+    }
+
+    .news-li h2 {
+      color: hsl(233, 8%, 79%);
+      margin-top: -15px;
+      font-size: 34px;
+    }
+
+    .news-li-content {
+      width: 225px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container--1">
+    <header class="main-header">
+      <img src="assets/images/logo.svg"/>
+      <div class="main-nav">
+        <a>Home</a>
+        <a>New</a>
+        <a>Popular</a>
+        <a>Trending</a>
+        <a>Categories</a>
+      </div>
+  </header>
+
+  <div class="container--2">
+    <div class="main-news">
+      <img src="assets/images/image-web-3-desktop.jpg" class="main-img"/>
+      <div class="main-content">
+        <h1>The Bright Future of Web 3.0?</h1>
+        <div class="sub-main-content">
+          <p>We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. 
+            But is it really fulfilling its promise?</p>
+          <button>Read more</button>
+        </div>
+      </div>
+    </div>
+      
+    <div class="sec-news">
+      <h1>New</h1> 
+      
+      <div class="content-block">
+        <h3>Hydrogen VS Electric Cars</h3>
+        <p>Will hydrogen-fueled cars ever catch up to EVs?</p>
+      </div>
+      <div class="content-block">
+        <h3>The Downsides of AI Artistry</h3>
+        <p>What are the possible adverse effects of on-demand AI image generation?</p>
+      </div>
+      <div class="content-block">
+        <h3>Is VC Funding Drying Up?</h3>
+        <p>Private funding by VC firms is down 50% YOY. We take a look at what that means.</p>
+      </div>
+    </div>
+  </div>
+
+  <ul class="news-list">
+    <li class="news-li">
+      <img src="assets/images/image-retro-pcs.jpg" class="news-li-img"/>
+      <div class="news-li-content">
+        <h2>01</h2>
+        <h3>Reviving Retro PCs</h3>
+        <p>What happens when old PCs are given modern upgrades?</p>
+      </div>
+    </li>
+    <li class="news-li">
+      <img src="assets/images/image-top-laptops.jpg" class="news-li-img"/>
+      <div class="news-li-content">
+        <h2>02</h2>
+        <h3>Top 10 Laptops of 2022</h3>
+        <p>Our best picks for various needs and budgets.</p>
+      </div>
+    </li>
+    <li class="news-li">
+      <img src="assets/images/image-gaming-growth.jpg" class="news-li-img"/>
+      <div class="news-li-content">
+        <h2>03</h2>
+        <h3>The Growth of Gaming</h3>
+        <p>How the pandemic has sparked fresh opportunities.</p>
+      </div>
+    </li>
+  </ul>
+  </div>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+</body>
+</html>
