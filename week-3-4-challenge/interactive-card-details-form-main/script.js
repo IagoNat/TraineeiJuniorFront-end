@@ -1,9 +1,7 @@
-function resetInputs() {
+function resetAll() {
     const inputs = document.querySelectorAll('input');
     inputs.forEach(input => input.value='');
-}
 
-function resetCards() {
     let cardNumberContent = document.querySelector('.card-number');
     let cardHolderContent = document.querySelector('.card-holder');
     let cardExpiryMonthContent = document.querySelector('.card-expiry-month');
@@ -15,11 +13,6 @@ function resetCards() {
     cardExpiryMonthContent.textContent = '0'.repeat(2);
     cardExpiryYearContent.textContent = '0'.repeat(2);
     cardCvcContent.textContent = '0'.repeat(3);
-}
-
-function resetAll() {
-    resetInputs();
-    resetCards();
 }
 
 window.onload = resetAll;
@@ -126,25 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    function validateDate() {
-        setTimeout(() => {
-            if((cardExpiryMonth.el.value.trim() === '' || cardExpiryYear.el.value.trim() === '') &&
-            (document.activeElement !== cardExpiryMonth.el && document.activeElement !== cardExpiryYear.el)) {
-                cardExpiryMonth.el.style.borderColor = cardExpiryYear.el.style.borderColor="#ff5252";
-                cardExpiryMonth.warning.style.display='block';
-                cardExpiryMonth.valid = cardExpiryYear.valid = false;
-            } else if(cardExpiryMonth.error.style.display == 'none' && cardExpiryYear.error.style.display == 'none') {
-                if(cardExpiryMonth.invalid_error.style.display === 'none') {
-                    cardExpiryMonth.el.style.borderColor="#dedddf"
-                    cardExpiryMonth.valid = true;
-                }
-                cardExpiryYear.el.style.borderColor="#dedddf";
-                cardExpiryYear.valid = true;
-            }
-        }, 0);
-    }
-
-    cardExpiryMonth.el.addEventListener('input', function(event) {
+    function validateDate(event) {
         let input = event.target.value;
             
         if(input > 12) {
@@ -155,12 +130,20 @@ document.addEventListener("DOMContentLoaded", () => {
             cardExpiryMonth.invalid_error.style.display = 'none';
             validateInput(cardExpiryMonth, 'number')();
         }
+    }
+    cardExpiryMonth.el.addEventListener('input', function(event) {
+        let input = event.target.value;
+            
+        validateDate(event);
 
         input = input.padStart(2, '0');
         cardExpiryMonth.content.textContent = input;
 
     });
-    cardExpiryMonth.el.addEventListener('blur', () => validateDate());
+    cardExpiryMonth.el.addEventListener('blur', function(event) {
+        validateInput(cardExpiryMonth, 'number')();
+        validateDate(event);
+    });
 
     cardExpiryYear.el.addEventListener('input', function(event) {
         let input = event.target.value;
@@ -170,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         validateInput(cardExpiryYear, 'number')();
     });
-    cardExpiryYear.el.addEventListener('blur', () => validateDate());
+    cardExpiryYear.el.addEventListener('blur', validateInput(cardExpiryYear, 'number'));
 
     cardCVC.el.addEventListener('input', function(event) {
         cardCVC.incomplete_error.style.display = 'none';
@@ -201,8 +184,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if(cardHolder.valid && cardNumber.valid && cardExpiryMonth.valid && cardExpiryYear.valid && cardCVC.valid) {
             inputContainer.style.display = 'none';
             confirmationContainer.style.display = 'flex';
-            
-            resetInputs();
         } else {
             if(cardHolder.el.value.trim() === '')
                 validateInput(cardHolder, 'text')();
@@ -222,6 +203,6 @@ document.addEventListener("DOMContentLoaded", () => {
         inputContainer.style.display = 'block';
         confirmationContainer.style.display = 'none';
 
-        resetCards();
+        resetAll();
     });
 });
